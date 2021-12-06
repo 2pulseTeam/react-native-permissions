@@ -9,7 +9,7 @@
 }
 
 + (NSString * _Nonnull)handlerUniqueId {
-  return @"ios.permission.MICROPHONE";
+  return @"ios.permission.LocalNetwork";
 }
 
 #include <ifaddrs.h>
