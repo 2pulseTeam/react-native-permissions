@@ -1,4 +1,4 @@
-#import "RNLocalNetworkPermission.h"
+#import "RNPermissionHandlerLocalNetwork.h"
 #include <dns_sd.h>
 
 @implementation RNLocalNetworkPermission{
