@@ -322,6 +322,7 @@ RCT_EXPORT_MODULE();
     case RNPermissionPhotoLibraryAddOnly:
       handler = [RNPermissionHandlerPhotoLibraryAddOnly new];
       break;
+#endif
 #if __has_include("RNPermissionHandlerLocalNetwork.h")
     case RNPermissionLocalNetwork:
       handler = [RNPermissionHandlerLocalNetwork new];
