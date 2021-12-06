@@ -1,4 +1,4 @@
-#import "RNPermissionHandlerMicrophone.h"
+#import "RNPermissionHandlerLocalNetwork.h"
 #include <ifaddrs.h>
 #include <sys/socket.h>
 #include <net/if.h>
@@ -6,14 +6,14 @@
 
 @import AVFoundation;
 
-@implementation RNPermissionHandlerMicrophone
+@implementation RNPermissionHandlerLocalNetwork
 
 + (NSArray<NSString *> * _Nonnull)usageDescriptionKeys {
-  return @[@"NSMicrophoneUsageDescription"];
+  return @[@"NSLocalNetWorkUsageDescription"];
 }
 
 + (NSString * _Nonnull)handlerUniqueId {
-  return @"ios.permission.MICROPHONE";
+  return @"ios.permission.LOCALNETWORK";
 }
 
 - (void)checkWithResolver:(void (^ _Nonnull)(RNPermissionStatus))resolve
