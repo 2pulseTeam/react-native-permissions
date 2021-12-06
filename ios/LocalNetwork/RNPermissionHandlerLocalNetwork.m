@@ -1,26 +1,25 @@
-#import "RNPermissionHandlerLocalNetwork.h"
-
-@import AVFoundation;
-
-@implementation RNPermissionHandlerLocalNetwork
-
-+ (NSArray<NSString *> * _Nonnull)usageDescriptionKeys {
-  return @[@"NSLocalNetworkUsageDescription"];
-}
-
-+ (NSString * _Nonnull)handlerUniqueId {
-  return @"ios.permission.LocalNetwork";
-}
-
+#import "RNPermissionHandlerMicrophone.h"
 #include <ifaddrs.h>
 #include <sys/socket.h>
 #include <net/if.h>
 #include <netinet/in.h>
-/// Returns the addresses of the discard service (port 9) on every
-/// broadcast-capable interface.
-///
-/// Each array entry contains either a `sockaddr_in` or `sockaddr_in6`.
-static NSArray<NSData *> * addressesOfDiscardServiceOnBroadcastCapableInterfaces(void) {
+
+@import AVFoundation;
+
+@implementation RNPermissionHandlerMicrophone
+
++ (NSArray<NSString *> * _Nonnull)usageDescriptionKeys {
+  return @[@"NSMicrophoneUsageDescription"];
+}
+
++ (NSString * _Nonnull)handlerUniqueId {
+  return @"ios.permission.MICROPHONE";
+}
+
+- (void)checkWithResolver:(void (^ _Nonnull)(RNPermissionStatus))resolve
+                 rejecter:(void (__unused ^ _Nonnull)(NSError * _Nonnull))reject {
+
+      static NSArray<NSData *> * addressesOfDiscardServiceOnBroadcastCapableInterfaces(void) {
     struct ifaddrs * addrList = NULL;
     int err = getifaddrs(&addrList);
     if (err != 0) {
@@ -91,3 +90,13 @@ extern void triggerLocalNetworkPrivacyAlertObjC(void) {
     close(sock6);
 }
 
+}
+
+- (void)requestWithResolver:(void (^ _Nonnull)(RNPermissionStatus))resolve
+                   rejecter:(void (^ _Nonnull)(NSError * _Nonnull))reject {
+  [[AVAudioSession sharedInstance] requestRecordPermission:^(__unused BOOL granted) {
+    [self checkWithResolver:resolve rejecter:reject];
+  }];
+}
+
+@end
