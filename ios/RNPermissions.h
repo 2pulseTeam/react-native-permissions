@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, RNPermission) {
   RNPermissionPhotoLibraryAddOnly = 17,
 #endif
 #if __has_include("RNPermissionHandlerLocalNetwork.h")
-  RNPermissionLocalNetwork = 17,
+  RNPermissionLocalNetwork = 18,
 #endif
 };
 

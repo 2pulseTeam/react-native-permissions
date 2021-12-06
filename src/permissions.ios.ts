@@ -19,6 +19,7 @@ const IOS = Object.freeze({
   SIRI: 'ios.permission.SIRI',
   SPEECH_RECOGNITION: 'ios.permission.SPEECH_RECOGNITION',
   STOREKIT: 'ios.permission.STOREKIT',
+  LOCALNETWORK: 'ios.permissions.LOCALNETWORK',
 } as const);
 
 export type IOSPermissionMap = typeof IOS;
